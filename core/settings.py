@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'rest_framework',
 
     # ? local
+    'core',
     'post.apps.PostConfig',
     'feedback',
 ]
