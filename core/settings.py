@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     # ? local
     'core',
     'post.apps.PostConfig',
-    'feedback',
+    'feedback.apps.FeedbackConfig',
 ]
 
 MIDDLEWARE = [

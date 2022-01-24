@@ -19,12 +19,15 @@ from django.urls import path, include
 from rest_framework import routers
 
 from post.views import PostViewSet
+from feedback.views import FeedbackViewSet
 
 router = routers.DefaultRouter()
 
-router.register('posts', PostViewSet, basename='posts')
+router.register(r'posts', PostViewSet)
+router.register(r'feedbacks', FeedbackViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('api-auth', include('rest_framework.urls')),
     path('admin/', admin.site.urls),
 ]

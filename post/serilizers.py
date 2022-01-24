@@ -2,6 +2,7 @@ from rest_framework import serializers
 
 from .models import Post
 from core.serializers import UserSerializer
+from feedback.models import Feedback
 
 class PostSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
@@ -10,6 +11,13 @@ class PostSerializer(serializers.ModelSerializer):
         fields = ('__all__')
 
 class PostCreateSerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
     class Meta:
         model = Post
         fields = ('__all__')
+
+class CommentsOnPostSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
+    class Meta:
+        model = Feedback
+        fields = ('id', 'user', 'body')

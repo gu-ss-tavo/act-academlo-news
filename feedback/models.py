@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from post.models import Post
 
 # Create your models here.
-class FeedBack(models.Model):
+class Feedback(models.Model):
     post = models.ForeignKey(Post, on_delete=models.PROTECT)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     body = models.TextField()
