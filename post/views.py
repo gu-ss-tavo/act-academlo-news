@@ -10,17 +10,19 @@ from .serilizers import CommentsOnPostSerializer, PostSerializer, PostCreateSeri
 
 from feedback.models import Feedback
 
-# Create your views here.
+# ? vista completa de los posts
 class PostViewSet(ModelViewSet):
     permission_classes = (IsUserInPostOrReadOnly,)
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 
+    # ? vista por métodos
     def get_serializer_class(self):
         if self.action == 'create':
             return PostCreateSerializer
         return PostSerializer
 
+    # ? ACCIÓN que muestra todos los comentarios que contiene el post
     @action(detail=True, methods=['GET'])
     def comments(self, request, pk=None):
         post = self.get_object()

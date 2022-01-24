@@ -23,11 +23,17 @@ from feedback.views import FeedbackViewSet
 
 router = routers.DefaultRouter()
 
+# ? ruta para los posts
 router.register(r'posts', PostViewSet)
+
+# ? ruta para los comentarios
 router.register(r'feedbacks', FeedbackViewSet)
 
 urlpatterns = [
+    # ? rutas
     path('', include(router.urls)),
+    # ? inicio / cambio / cerrar - sesión
     path('api-auth', include('rest_framework.urls')),
+    # ? panel de admin
     path('admin/', admin.site.urls),
 ]
