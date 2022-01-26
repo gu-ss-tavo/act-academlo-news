@@ -11,7 +11,7 @@
 
 ### Sections
 
->**users/**\
+>**user/**\
 >[+]  ```users/my_comments/```
 
 >**register/**
