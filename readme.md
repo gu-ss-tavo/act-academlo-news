@@ -9,6 +9,21 @@
 
 ---
 
+### Sections
+
+>**users/**\
+>[+]  ```users/my_comments/```
+
+>**register/**
+
+>**posts/**\
+>[+]  ```posts/<int>/```\
+>[+]  ```posts/<int>/comments```
+
+>**feedbacks/**\
+>[+]  ```feedbacks/<int>/```
+---
+
 by **gu-ss-tavo** :skull:
 
 ---

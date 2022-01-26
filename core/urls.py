@@ -15,25 +15,22 @@ Including another URLconf
 """
 
 from django.contrib import admin
+from django.shortcuts import redirect
 from django.urls import path, include
-from rest_framework import routers
 
-from post.views import PostViewSet
-from feedback.views import FeedbackViewSet
+from .api.v1.urls import router as core_router
 
-router = routers.DefaultRouter()
-
-# ? ruta para los posts
-router.register(r'posts', PostViewSet)
-
-# ? ruta para los comentarios
-router.register(r'feedbacks', FeedbackViewSet)
+def redirect_init(request):
+    response = redirect('/api/')
+    return response
 
 urlpatterns = [
-    # ? rutas
-    path('', include(router.urls)),
-    # ? inicio / cambio / cerrar - sesión
-    path('api-auth', include('rest_framework.urls')),
     # ? panel de admin
     path('admin/', admin.site.urls),
+    # ? rutas
+    path('api/', include(core_router.urls)),
+    # ? inicio / cambio / cerrar - sesión
+    path('api-auth', include('rest_framework.urls')),
+
+    path('', redirect_init),
 ]

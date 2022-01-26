@@ -1,12 +1,12 @@
 from django.db import models
 
-from django.contrib.auth.models import User
 from post.models import Post
+from user.models import CustomUser
 
 # Create your models here.
 class Feedback(models.Model):
     post = models.ForeignKey(Post, on_delete=models.PROTECT)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     body = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
